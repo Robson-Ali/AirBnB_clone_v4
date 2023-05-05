@@ -1,21 +1,14 @@
-flasgger endpoint for GET, DELETE, PUT request for amenities data
-GET: returns all amenities data
-DELETE: deletes a amenity
-PUT: retrieves a amenity
+flasgger endpoint for GET & POST request for states data
+GET: returns all state data
+POST: creates new state object based on attributes from request data
 ---
 paths:
-  '/amenities/{amenity_id}':
+  '/states/':
 get:
-delete:
-put:
+post:
 tags:
-  - GET, DELETE, PUT /amenities/{amenity_id}
+  - GET, POST /states/
 parameters:
-  - name: amenity_id
-    in: path
-    data: string
-    required: true
-    description: the unique amenity id of amenity to update
   - name: name
     in: body
     data: string
@@ -24,7 +17,7 @@ parameters:
       properties:
         name:
           type: string
-          description: name attribute of the amenity to update
+          description: name attribute of the state to create
 responses:
   200:
     description: objects's attributes names and values in JSON

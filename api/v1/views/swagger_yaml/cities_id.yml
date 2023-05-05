@@ -1,21 +1,20 @@
-flasgger endpoint for GET, DELETE, PUT request for amenities data
-GET: returns all amenities data
-DELETE: deletes a amenity
-PUT: retrieves a amenity
+flasgger endpoint for GET, DELETE, PUT city object
+GET: returns requested city with id <city_id>
+DELETE: deletes the city object with id <city_id>
 ---
 paths:
-  '/amenities/{amenity_id}':
+  /cities/{city_id}:
+tags:
+  - GET, DELETE, PUT cities/{city_id}
 get:
 delete:
 put:
-tags:
-  - GET, DELETE, PUT /amenities/{amenity_id}
 parameters:
-  - name: amenity_id
+  - name: city_id
     in: path
     data: string
     required: true
-    description: the unique amenity id of amenity to update
+    description: the unique city id of city to update
   - name: name
     in: body
     data: string
@@ -24,15 +23,18 @@ parameters:
       properties:
         name:
           type: string
-          description: name attribute of the amenity to update
+          description: name attribute of the city to update
 responses:
   200:
-    description: objects's attributes names and values in JSON
+    description: the objects's attributes names and values in JSON format
     schema:
       properties:
         __class__:
           type: string
           description: Class name (obj.__class__.__name__)
+        state_id:
+          type: string
+          description: unique state id of the related state of the object
         id:
           type: string
           description: unique id of the object
